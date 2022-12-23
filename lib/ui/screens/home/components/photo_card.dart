@@ -34,8 +34,8 @@ class PhotoCard extends StatelessWidget {
   Widget _buildImage() {
     return CachedNetworkImage(
       imageUrl: photoItem.thumbnailUrl,
-      placeholder: (context, url) => const CircularProgressIndicator(),
-      errorWidget: (context, url, error) => const Icon(Icons.error),
+      placeholder: (_, __) => const CircularProgressIndicator(),
+      errorWidget: (_, __, ___) => const Icon(Icons.error),
     );
   }
 }
