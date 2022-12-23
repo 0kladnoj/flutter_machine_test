@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'home_state.dart';
+part of 'home_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,53 +15,202 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
+mixin _$HomeEvent {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadPhotos,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadPhotos,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadPhotos,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadPhotos value) loadPhotos,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadPhotos value)? loadPhotos,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadPhotos value)? loadPhotos,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $HomeEventCopyWith<$Res> {
+  factory $HomeEventCopyWith(HomeEvent value, $Res Function(HomeEvent) then) =
+      _$HomeEventCopyWithImpl<$Res, HomeEvent>;
+}
+
+/// @nodoc
+class _$HomeEventCopyWithImpl<$Res, $Val extends HomeEvent>
+    implements $HomeEventCopyWith<$Res> {
+  _$HomeEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$_LoadPhotosCopyWith<$Res> {
+  factory _$$_LoadPhotosCopyWith(
+          _$_LoadPhotos value, $Res Function(_$_LoadPhotos) then) =
+      __$$_LoadPhotosCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_LoadPhotosCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$_LoadPhotos>
+    implements _$$_LoadPhotosCopyWith<$Res> {
+  __$$_LoadPhotosCopyWithImpl(
+      _$_LoadPhotos _value, $Res Function(_$_LoadPhotos) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_LoadPhotos implements _LoadPhotos {
+  const _$_LoadPhotos();
+
+  @override
+  String toString() {
+    return 'HomeEvent.loadPhotos()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_LoadPhotos);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadPhotos,
+  }) {
+    return loadPhotos();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadPhotos,
+  }) {
+    return loadPhotos?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadPhotos,
+    required TResult orElse(),
+  }) {
+    if (loadPhotos != null) {
+      return loadPhotos();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadPhotos value) loadPhotos,
+  }) {
+    return loadPhotos(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadPhotos value)? loadPhotos,
+  }) {
+    return loadPhotos?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadPhotos value)? loadPhotos,
+    required TResult orElse(),
+  }) {
+    if (loadPhotos != null) {
+      return loadPhotos(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadPhotos implements HomeEvent {
+  const factory _LoadPhotos() = _$_LoadPhotos;
+}
+
+/// @nodoc
 mixin _$HomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() nada,
+    required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PhotoItem> photos) funPhotos,
+    required TResult Function(List<PhotoItem> photos) loadedPhotos,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? nada,
+    TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PhotoItem> photos)? funPhotos,
+    TResult? Function(List<PhotoItem> photos)? loadedPhotos,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? nada,
+    TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PhotoItem> photos)? funPhotos,
+    TResult Function(List<PhotoItem> photos)? loadedPhotos,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Nada value) nada,
+    required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(FunPhotos value) funPhotos,
+    required TResult Function(LoadedPhotos value) loadedPhotos,
     required TResult Function(Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Nada value)? nada,
+    TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(FunPhotos value)? funPhotos,
+    TResult? Function(LoadedPhotos value)? loadedPhotos,
     TResult? Function(Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Nada value)? nada,
+    TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(FunPhotos value)? funPhotos,
+    TResult Function(LoadedPhotos value)? loadedPhotos,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) =>
@@ -86,32 +235,33 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
 }
 
 /// @nodoc
-abstract class _$$NadaCopyWith<$Res> {
-  factory _$$NadaCopyWith(_$Nada value, $Res Function(_$Nada) then) =
-      __$$NadaCopyWithImpl<$Res>;
+abstract class _$$InitialCopyWith<$Res> {
+  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
+      __$$InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$NadaCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res, _$Nada>
-    implements _$$NadaCopyWith<$Res> {
-  __$$NadaCopyWithImpl(_$Nada _value, $Res Function(_$Nada) _then)
+class __$$InitialCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$Initial>
+    implements _$$InitialCopyWith<$Res> {
+  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Nada implements Nada {
-  _$Nada();
+class _$Initial implements Initial {
+  const _$Initial();
 
   @override
   String toString() {
-    return 'HomeState.nada()';
+    return 'HomeState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Nada);
+        (other.runtimeType == runtimeType && other is _$Initial);
   }
 
   @override
@@ -120,36 +270,36 @@ class _$Nada implements Nada {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() nada,
+    required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PhotoItem> photos) funPhotos,
+    required TResult Function(List<PhotoItem> photos) loadedPhotos,
     required TResult Function(String error) error,
   }) {
-    return nada();
+    return initial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? nada,
+    TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PhotoItem> photos)? funPhotos,
+    TResult? Function(List<PhotoItem> photos)? loadedPhotos,
     TResult? Function(String error)? error,
   }) {
-    return nada?.call();
+    return initial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? nada,
+    TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PhotoItem> photos)? funPhotos,
+    TResult Function(List<PhotoItem> photos)? loadedPhotos,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
-    if (nada != null) {
-      return nada();
+    if (initial != null) {
+      return initial();
     }
     return orElse();
   }
@@ -157,43 +307,43 @@ class _$Nada implements Nada {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Nada value) nada,
+    required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(FunPhotos value) funPhotos,
+    required TResult Function(LoadedPhotos value) loadedPhotos,
     required TResult Function(Error value) error,
   }) {
-    return nada(this);
+    return initial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Nada value)? nada,
+    TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(FunPhotos value)? funPhotos,
+    TResult? Function(LoadedPhotos value)? loadedPhotos,
     TResult? Function(Error value)? error,
   }) {
-    return nada?.call(this);
+    return initial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Nada value)? nada,
+    TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(FunPhotos value)? funPhotos,
+    TResult Function(LoadedPhotos value)? loadedPhotos,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
-    if (nada != null) {
-      return nada(this);
+    if (initial != null) {
+      return initial(this);
     }
     return orElse();
   }
 }
 
-abstract class Nada implements HomeState {
-  factory Nada() = _$Nada;
+abstract class Initial implements HomeState {
+  const factory Initial() = _$Initial;
 }
 
 /// @nodoc
@@ -213,7 +363,7 @@ class __$$LoadingCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Loading implements Loading {
-  _$Loading();
+  const _$Loading();
 
   @override
   String toString() {
@@ -232,9 +382,9 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() nada,
+    required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PhotoItem> photos) funPhotos,
+    required TResult Function(List<PhotoItem> photos) loadedPhotos,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -243,9 +393,9 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? nada,
+    TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PhotoItem> photos)? funPhotos,
+    TResult? Function(List<PhotoItem> photos)? loadedPhotos,
     TResult? Function(String error)? error,
   }) {
     return loading?.call();
@@ -254,9 +404,9 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? nada,
+    TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PhotoItem> photos)? funPhotos,
+    TResult Function(List<PhotoItem> photos)? loadedPhotos,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -269,9 +419,9 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Nada value) nada,
+    required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(FunPhotos value) funPhotos,
+    required TResult Function(LoadedPhotos value) loadedPhotos,
     required TResult Function(Error value) error,
   }) {
     return loading(this);
@@ -280,9 +430,9 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Nada value)? nada,
+    TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(FunPhotos value)? funPhotos,
+    TResult? Function(LoadedPhotos value)? loadedPhotos,
     TResult? Function(Error value)? error,
   }) {
     return loading?.call(this);
@@ -291,9 +441,9 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Nada value)? nada,
+    TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(FunPhotos value)? funPhotos,
+    TResult Function(LoadedPhotos value)? loadedPhotos,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -305,24 +455,24 @@ class _$Loading implements Loading {
 }
 
 abstract class Loading implements HomeState {
-  factory Loading() = _$Loading;
+  const factory Loading() = _$Loading;
 }
 
 /// @nodoc
-abstract class _$$FunPhotosCopyWith<$Res> {
-  factory _$$FunPhotosCopyWith(
-          _$FunPhotos value, $Res Function(_$FunPhotos) then) =
-      __$$FunPhotosCopyWithImpl<$Res>;
+abstract class _$$LoadedPhotosCopyWith<$Res> {
+  factory _$$LoadedPhotosCopyWith(
+          _$LoadedPhotos value, $Res Function(_$LoadedPhotos) then) =
+      __$$LoadedPhotosCopyWithImpl<$Res>;
   @useResult
   $Res call({List<PhotoItem> photos});
 }
 
 /// @nodoc
-class __$$FunPhotosCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$FunPhotos>
-    implements _$$FunPhotosCopyWith<$Res> {
-  __$$FunPhotosCopyWithImpl(
-      _$FunPhotos _value, $Res Function(_$FunPhotos) _then)
+class __$$LoadedPhotosCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$LoadedPhotos>
+    implements _$$LoadedPhotosCopyWith<$Res> {
+  __$$LoadedPhotosCopyWithImpl(
+      _$LoadedPhotos _value, $Res Function(_$LoadedPhotos) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -330,7 +480,7 @@ class __$$FunPhotosCopyWithImpl<$Res>
   $Res call({
     Object? photos = null,
   }) {
-    return _then(_$FunPhotos(
+    return _then(_$LoadedPhotos(
       null == photos
           ? _value._photos
           : photos // ignore: cast_nullable_to_non_nullable
@@ -341,8 +491,8 @@ class __$$FunPhotosCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FunPhotos implements FunPhotos {
-  _$FunPhotos(final List<PhotoItem> photos) : _photos = photos;
+class _$LoadedPhotos implements LoadedPhotos {
+  const _$LoadedPhotos(final List<PhotoItem> photos) : _photos = photos;
 
   final List<PhotoItem> _photos;
   @override
@@ -354,14 +504,14 @@ class _$FunPhotos implements FunPhotos {
 
   @override
   String toString() {
-    return 'HomeState.funPhotos(photos: $photos)';
+    return 'HomeState.loadedPhotos(photos: $photos)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FunPhotos &&
+            other is _$LoadedPhotos &&
             const DeepCollectionEquality().equals(other._photos, _photos));
   }
 
@@ -372,42 +522,42 @@ class _$FunPhotos implements FunPhotos {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FunPhotosCopyWith<_$FunPhotos> get copyWith =>
-      __$$FunPhotosCopyWithImpl<_$FunPhotos>(this, _$identity);
+  _$$LoadedPhotosCopyWith<_$LoadedPhotos> get copyWith =>
+      __$$LoadedPhotosCopyWithImpl<_$LoadedPhotos>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() nada,
+    required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PhotoItem> photos) funPhotos,
+    required TResult Function(List<PhotoItem> photos) loadedPhotos,
     required TResult Function(String error) error,
   }) {
-    return funPhotos(photos);
+    return loadedPhotos(photos);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? nada,
+    TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PhotoItem> photos)? funPhotos,
+    TResult? Function(List<PhotoItem> photos)? loadedPhotos,
     TResult? Function(String error)? error,
   }) {
-    return funPhotos?.call(photos);
+    return loadedPhotos?.call(photos);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? nada,
+    TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PhotoItem> photos)? funPhotos,
+    TResult Function(List<PhotoItem> photos)? loadedPhotos,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
-    if (funPhotos != null) {
-      return funPhotos(photos);
+    if (loadedPhotos != null) {
+      return loadedPhotos(photos);
     }
     return orElse();
   }
@@ -415,47 +565,47 @@ class _$FunPhotos implements FunPhotos {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Nada value) nada,
+    required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(FunPhotos value) funPhotos,
+    required TResult Function(LoadedPhotos value) loadedPhotos,
     required TResult Function(Error value) error,
   }) {
-    return funPhotos(this);
+    return loadedPhotos(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Nada value)? nada,
+    TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(FunPhotos value)? funPhotos,
+    TResult? Function(LoadedPhotos value)? loadedPhotos,
     TResult? Function(Error value)? error,
   }) {
-    return funPhotos?.call(this);
+    return loadedPhotos?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Nada value)? nada,
+    TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(FunPhotos value)? funPhotos,
+    TResult Function(LoadedPhotos value)? loadedPhotos,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
-    if (funPhotos != null) {
-      return funPhotos(this);
+    if (loadedPhotos != null) {
+      return loadedPhotos(this);
     }
     return orElse();
   }
 }
 
-abstract class FunPhotos implements HomeState {
-  factory FunPhotos(final List<PhotoItem> photos) = _$FunPhotos;
+abstract class LoadedPhotos implements HomeState {
+  const factory LoadedPhotos(final List<PhotoItem> photos) = _$LoadedPhotos;
 
   List<PhotoItem> get photos;
   @JsonKey(ignore: true)
-  _$$FunPhotosCopyWith<_$FunPhotos> get copyWith =>
+  _$$LoadedPhotosCopyWith<_$LoadedPhotos> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -490,7 +640,7 @@ class __$$ErrorCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res, _$Error>
 /// @nodoc
 
 class _$Error implements Error {
-  _$Error(this.error);
+  const _$Error(this.error);
 
   @override
   final String error;
@@ -520,9 +670,9 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() nada,
+    required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PhotoItem> photos) funPhotos,
+    required TResult Function(List<PhotoItem> photos) loadedPhotos,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -531,9 +681,9 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? nada,
+    TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PhotoItem> photos)? funPhotos,
+    TResult? Function(List<PhotoItem> photos)? loadedPhotos,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -542,9 +692,9 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? nada,
+    TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PhotoItem> photos)? funPhotos,
+    TResult Function(List<PhotoItem> photos)? loadedPhotos,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -557,9 +707,9 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Nada value) nada,
+    required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(FunPhotos value) funPhotos,
+    required TResult Function(LoadedPhotos value) loadedPhotos,
     required TResult Function(Error value) error,
   }) {
     return error(this);
@@ -568,9 +718,9 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Nada value)? nada,
+    TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(FunPhotos value)? funPhotos,
+    TResult? Function(LoadedPhotos value)? loadedPhotos,
     TResult? Function(Error value)? error,
   }) {
     return error?.call(this);
@@ -579,9 +729,9 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Nada value)? nada,
+    TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(FunPhotos value)? funPhotos,
+    TResult Function(LoadedPhotos value)? loadedPhotos,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -593,7 +743,7 @@ class _$Error implements Error {
 }
 
 abstract class Error implements HomeState {
-  factory Error(final String error) = _$Error;
+  const factory Error(final String error) = _$Error;
 
   String get error;
   @JsonKey(ignore: true)

@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_machine_test/data/photo_item.dart';
+
+import '../../../models/photo_item.dart';
+import '../../../utils/app_utils.dart';
 
 class DetailScreen extends StatelessWidget {
   final PhotoItem item;
@@ -19,11 +21,13 @@ class DetailScreen extends StatelessWidget {
               expandedHeight: 350.0,
               flexibleSpace: FlexibleSpaceBar(
                 background: Hero(
-                  tag: "SelectedItem-${item.id}",
+                  tag: AppUtils.photoTag(item.id),
                   child: CachedNetworkImage(
                     imageUrl: item.url,
-                    placeholder: (context, url) => const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
               ),
@@ -31,30 +35,36 @@ class DetailScreen extends StatelessWidget {
             SliverToBoxAdapter(
               child: Container(
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
-                child: Text('Id: ${item.id}',
-                    maxLines: 3,
-                    style: const TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w300,
-                        color: Colors.grey)),
+                child: Text(
+                  'Id: ${item.id}',
+                  maxLines: 3,
+                  style: const TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.grey),
+                ),
               ),
             ),
             SliverToBoxAdapter(
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Text(item.title,
-                    maxLines: 3,
-                    style: const TextStyle(
-                        fontSize: 25.0, fontWeight: FontWeight.bold)),
+                child: Text(
+                  item.title,
+                  maxLines: 3,
+                  style: const TextStyle(
+                      fontSize: 25.0, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
             SliverToBoxAdapter(
               child: Container(
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
-                child: Text('album #: ${item.albumId}',
-                    maxLines: 3,
-                    style: const TextStyle(
-                        fontSize: 20.0, fontWeight: FontWeight.w300)),
+                child: Text(
+                  'album #: ${item.albumId}',
+                  maxLines: 3,
+                  style: const TextStyle(
+                      fontSize: 20.0, fontWeight: FontWeight.w300),
+                ),
               ),
             ),
           ],

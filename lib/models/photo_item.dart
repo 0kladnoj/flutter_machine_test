@@ -3,10 +3,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'photo_item.g.dart';
 
-List<PhotoItem> photosFromResponse(List results) {
-  return results.map((e) => PhotoItem.fromJson(e)).toList();
-}
-
 @JsonSerializable()
 class PhotoItem extends Equatable {
   final int albumId;
@@ -15,7 +11,7 @@ class PhotoItem extends Equatable {
   final String url;
   final String thumbnailUrl;
 
-  PhotoItem({
+  const PhotoItem({
     required this.albumId,
     required this.id,
     required this.title,
@@ -24,7 +20,15 @@ class PhotoItem extends Equatable {
   });
 
   @override
-  List<Object> get props => [albumId, id, title, url, thumbnailUrl];
+  List<Object> get props {
+    return [
+      albumId,
+      id,
+      title,
+      url,
+      thumbnailUrl,
+    ];
+  }
 
   factory PhotoItem.fromJson(Map<String, dynamic> json) =>
       _$PhotoItemFromJson(json);

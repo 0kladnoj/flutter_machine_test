@@ -2,13 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:bloc_test/bloc_test.dart';
+import 'package:flutter_machine_test/bloc/home/home_bloc.dart';
+import 'package:flutter_machine_test/di/di.dart';
+import 'package:flutter_machine_test/models/photo_item.dart';
+import 'package:flutter_machine_test/services/photo_service.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_machine_test/blocs/home_bloc.dart';
-import 'package:flutter_machine_test/blocs/home_events.dart';
-import 'package:flutter_machine_test/blocs/home_state.dart';
-import 'package:flutter_machine_test/data/photo_item.dart';
-import 'package:flutter_machine_test/injection/injection.dart';
-import 'package:flutter_machine_test/networking/network_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -23,17 +21,17 @@ void main() {
   setUpAll(() async {
     configureDependencies();
 
-    getIt.allowReassignment = true;
-    getIt.registerSingleton<Dio>(dio);
+    locator.allowReassignment = true;
+    locator.registerSingleton<Dio>(dio);
     mockApiData(dio);
-    NetworkRepository repository = getIt<NetworkRepository>();
+    final repository = locator<PhotoService>();
     items = await repository.getPhotos();
   });
 
   group('- Logic methods test', () {
     group('- ApiService class methods test', () {
       test('- Get Method Success test', () async {
-        NetworkRepository repository = getIt<NetworkRepository>();
+        PhotoService repository = locator<PhotoService>();
         List<PhotoItem> items = await repository.getPhotos();
         expect(items, isNotNull);
         expect(items.length, 5000);
@@ -42,21 +40,21 @@ void main() {
     group('- BloC test', () {
       blocTest<HomeBloc, HomeState>(
         'emits [] when nothing is added',
-        build: () => getIt<HomeBloc>(),
+        build: () => locator<HomeBloc>(),
         expect: () => <HomeState>[
-          Loading(),
-          FunPhotos(items),
+          const Loading(),
+          LoadedPhotos(items),
         ],
       );
       blocTest<HomeBloc, HomeState>('emits [HomeState] when MyEvent is added',
-          build: () => getIt<HomeBloc>(),
-          act: (bloc) => bloc.add(HomeEvents.loadData()),
+          build: () => locator<HomeBloc>(),
+          act: (bloc) => bloc.add(const HomeEvent.loadPhotos()),
           expect: () => <HomeState>[
-                Loading(),
-                FunPhotos(items),
+                const Loading(),
+                LoadedPhotos(items),
               ],
           verify: (_) {
-            verify(() => getIt<NetworkRepository>().getPhotos()).called(2);
+            verify(() => locator<PhotoService>().getPhotos()).called(2);
           });
     });
   });
@@ -69,6 +67,5 @@ void mockApiData(Dio dio) {
       statusCode: 200,
       requestOptions: RequestOptions(path: 'gfh', baseUrl: "fgh"),
       data: map);
-  when(dio.get("https://jsonplaceholder.typicode.com/photos"))
-      .thenAnswer((_) async => response);
+  when(dio.get("photos")).thenAnswer((_) async => response);
 }

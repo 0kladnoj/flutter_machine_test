@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_machine_test/injection/injection.dart';
-import 'package:flutter_machine_test/screens/home_screen.dart';
+
+import 'di/di.dart';
+import 'ui/screens/home/home_screen.dart';
 
 void main() {
   configureDependencies();
