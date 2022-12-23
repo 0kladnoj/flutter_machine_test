@@ -5,11 +5,10 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:flutter_machine_test/di/di.dart';
+import 'package:flutter_machine_test/services/photo_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_machine_test/data/photo_item.dart';
-import 'package:flutter_machine_test/injection/injection.dart';
-import 'package:flutter_machine_test/networking/network_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_machine_test/main.dart';
@@ -24,8 +23,8 @@ void main() {
   setUpAll(() async {
     configureDependencies();
 
-    getIt.allowReassignment = true;
-    getIt.registerSingleton<Dio>(dio);
+    locator.allowReassignment = true;
+    locator.registerSingleton<Dio>(dio);
     mockApiData(dio);
   });
 
@@ -44,10 +43,11 @@ void main() {
       expect(find.byKey(const Key('item-1')), findsOneWidget);
 
       await tester.dragUntilVisible(
-          find.byKey(const Key('item-100')), // what you want to find
-          find.byType(ListView),
-          const Offset(0, -200), // delta to move
-          duration: const Duration(seconds: 2));
+        find.byKey(const Key('item-100')),
+        find.byType(ListView),
+        const Offset(0, -200),
+        duration: const Duration(seconds: 2),
+      );
       expect(find.byKey(const Key('item-1')), findsNothing);
     });
 
@@ -55,20 +55,23 @@ void main() {
       await tester.pumpWidget(const MyApp());
       await tester.pump();
       await tester.dragUntilVisible(
-          find.byKey(const Key('item-100')), // what you want to find
-          find.byType(ListView),
-          const Offset(0, -200), // delta to move
-          duration: const Duration(seconds: 2));
-      NetworkRepository repository = getIt<NetworkRepository>();
-      final List<PhotoItem> items = await repository.getPhotos();
+        find.byKey(const Key('item-100')),
+        find.byType(ListView),
+        const Offset(0, -200),
+        duration: const Duration(seconds: 2),
+      );
+      final repository = locator<PhotoService>();
+      final items = await repository.getPhotos();
       final item = items.firstWhere((e) => e.id == 100);
       final selectedItem = find.byKey(const Key('item-100'));
       await tester.tap(selectedItem);
       await tester.pump();
       expect(find.text('Id: ${item.id}', skipOffstage: false), findsOneWidget);
       expect(find.text(item.title), findsOneWidget);
-      expect(find.text('album #: ${item.albumId}', skipOffstage: false),
-          findsOneWidget);
+      expect(
+        find.text('album #: ${item.albumId}', skipOffstage: false),
+        findsOneWidget,
+      );
     });
   });
 }
