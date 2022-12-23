@@ -20,7 +20,7 @@ class PhotoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       key: Key(AppUtils.cardKey(_id)),
-      elevation: 3,
+      elevation: 4,
       child: ListTile(
         onTap: onTap,
         leading: Hero(tag: AppUtils.photoTag(_id), child: _buildImage()),

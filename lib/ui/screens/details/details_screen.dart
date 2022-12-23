@@ -29,7 +29,7 @@ class DetailScreen extends StatelessWidget {
     return SliverAppBar(
       title: const Text(''),
       backgroundColor: Colors.white,
-      expandedHeight: 350.0,
+      expandedHeight: 360,
       flexibleSpace: FlexibleSpaceBar(
         background: Hero(
           tag: AppUtils.photoTag(item.id),
@@ -46,12 +46,12 @@ class DetailScreen extends StatelessWidget {
   SliverToBoxAdapter _buildId() {
     return SliverToBoxAdapter(
       child: Container(
-        padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
         child: Text(
           AppUtils.photoId(item.id),
           maxLines: 3,
           style: const TextStyle(
-            fontSize: 20.0,
+            fontSize: 20,
             fontWeight: FontWeight.w300,
             color: Colors.grey,
           ),
@@ -64,13 +64,13 @@ class DetailScreen extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: 15,
+          horizontal: 16,
         ),
         child: Text(
           item.title,
           maxLines: 3,
           style: const TextStyle(
-            fontSize: 25.0,
+            fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -82,15 +82,15 @@ class DetailScreen extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.only(
-          left: 15,
-          right: 15,
+          left: 16,
+          right: 16,
           top: 20,
         ),
         child: Text(
           AppUtils.photoAlbum(item.albumId),
           maxLines: 3,
           style: const TextStyle(
-            fontSize: 20.0,
+            fontSize: 20,
             fontWeight: FontWeight.w300,
           ),
         ),
