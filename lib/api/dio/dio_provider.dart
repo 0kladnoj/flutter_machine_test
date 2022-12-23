@@ -14,13 +14,15 @@ abstract class DioProvider {
       BaseOptions(
         baseUrl: ApiConstants.baseUrl,
       ),
-    )..interceptors.addAll([
-        PrettyDioLogger(
-          requestBody: true,
-          error: true,
-          requestHeader: true,
-          compact: true,
-        ),
-      ]);
+    )..interceptors.addAll(
+        [
+          PrettyDioLogger(
+            requestBody: true,
+            error: true,
+            requestHeader: true,
+            compact: true,
+          ),
+        ],
+      );
   }
 }

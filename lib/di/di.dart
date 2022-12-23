@@ -7,7 +7,7 @@ final locator = GetIt.I;
 
 @InjectableInit(
   initializerName: r'$initGetIt',
-  preferRelativeImports: true, // default
-  asExtension: false, // default
+  preferRelativeImports: true,
+  asExtension: false,
 )
 void configureDependencies() => $initGetIt(locator);

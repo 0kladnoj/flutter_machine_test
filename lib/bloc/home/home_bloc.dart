@@ -1,7 +1,7 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../base/bloc/base_bloc.dart';
 import '../../models/photo_item.dart';
 import '../../services/photo_service.dart';
 
@@ -10,7 +10,7 @@ part 'home_state.dart';
 part 'home_bloc.freezed.dart';
 
 @injectable
-class HomeBloc extends Bloc<HomeEvent, HomeState> {
+class HomeBloc extends BaseBloc<HomeEvent, HomeState> {
   final PhotoService _photoService;
 
   HomeBloc(this._photoService) : super(const Initial()) {
@@ -22,9 +22,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> _loadPhotos() async {
-    await _photoService
-        .getPhotos()
-        .then((photos) => emit(HomeState.loadedPhotos(photos)))
-        .catchError((error, _) => emit(HomeState.error(error.toString())));
+    await performSafeAction(() async {
+      final photos = await _photoService.getPhotos();
+      emit(HomeState.loadedPhotos(photos));
+    });
+  }
+
+  @override
+  void handleError(String massage) {
+    emit(HomeState.error(massage));
   }
 }

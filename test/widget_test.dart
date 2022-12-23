@@ -43,10 +43,11 @@ void main() {
       expect(find.byKey(const Key('item-1')), findsOneWidget);
 
       await tester.dragUntilVisible(
-          find.byKey(const Key('item-100')), // what you want to find
-          find.byType(ListView),
-          const Offset(0, -200), // delta to move
-          duration: const Duration(seconds: 2));
+        find.byKey(const Key('item-100')),
+        find.byType(ListView),
+        const Offset(0, -200),
+        duration: const Duration(seconds: 2),
+      );
       expect(find.byKey(const Key('item-1')), findsNothing);
     });
 
@@ -54,10 +55,11 @@ void main() {
       await tester.pumpWidget(const MyApp());
       await tester.pump();
       await tester.dragUntilVisible(
-          find.byKey(const Key('item-100')), // what you want to find
-          find.byType(ListView),
-          const Offset(0, -200), // delta to move
-          duration: const Duration(seconds: 2));
+        find.byKey(const Key('item-100')),
+        find.byType(ListView),
+        const Offset(0, -200),
+        duration: const Duration(seconds: 2),
+      );
       final repository = locator<PhotoService>();
       final items = await repository.getPhotos();
       final item = items.firstWhere((e) => e.id == 100);
@@ -66,8 +68,10 @@ void main() {
       await tester.pump();
       expect(find.text('Id: ${item.id}', skipOffstage: false), findsOneWidget);
       expect(find.text(item.title), findsOneWidget);
-      expect(find.text('album #: ${item.albumId}', skipOffstage: false),
-          findsOneWidget);
+      expect(
+        find.text('album #: ${item.albumId}', skipOffstage: false),
+        findsOneWidget,
+      );
     });
   });
 }
