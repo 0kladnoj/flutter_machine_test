@@ -23,15 +23,12 @@ class HomeScreen extends StatelessWidget {
         child: SafeArea(
           child: BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
-              return state.when(initial: () {
-                return const LoadingView();
-              }, loading: () {
-                return const LoadingView();
-              }, loadedPhotos: (fact) {
-                return _photosList(context, fact);
-              }, error: (error) {
-                return ErrorView(error: error);
-              });
+              return state.when(
+                initial: () => const LoadingView(),
+                loading: () => const LoadingView(),
+                loadedPhotos: (fact) => _photosList(context, fact),
+                error: (error) => ErrorView(error: error),
+              );
             },
           ),
         ),
