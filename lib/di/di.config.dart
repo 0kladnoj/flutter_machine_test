@@ -36,15 +36,14 @@ _i1.GetIt $initGetIt(
   gh.singleton<_i3.Dio>(dioProvider.dio());
   gh.lazySingleton<_i4.AppApi>(() => appApiModule.createAppApi(gh<_i3.Dio>()));
   gh.factory<_i5.PhotoService>(
-    () => _i5.PhotoServiceDev(gh<_i4.AppApi>()),
+    () => _i5.ApiPhotoService(gh<_i4.AppApi>()),
     registerFor: {_dev},
   );
   gh.factory<_i5.PhotoService>(
-    () => _i5.PhotoServiceText(gh<_i4.AppApi>()),
+    () => _i5.TestPhotoService(gh<_i4.AppApi>()),
     registerFor: {_test},
   );
   gh.factory<_i6.HomeBloc>(() => _i6.HomeBloc(gh<_i5.PhotoService>()));
-  gh.factory<_i6.MockHomeBloc>(() => _i6.MockHomeBloc(gh<_i5.PhotoService>()));
   return getIt;
 }
 

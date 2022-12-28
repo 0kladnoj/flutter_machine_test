@@ -18,8 +18,8 @@ abstract class PhotoService extends BaseService {
 }
 
 @Injectable(as: PhotoService, env: [Environment.dev])
-class PhotoServiceDev extends PhotoService {
-  const PhotoServiceDev(super._api);
+class ApiPhotoService extends PhotoService {
+  const ApiPhotoService(AppApi api) : super(api);
 
   @override
   Future<List<PhotoItem>> getPhotos() {
@@ -28,8 +28,8 @@ class PhotoServiceDev extends PhotoService {
 }
 
 @Injectable(as: PhotoService, env: [Environment.test])
-class PhotoServiceText extends PhotoService {
-  const PhotoServiceText(super._api);
+class TestPhotoService extends PhotoService {
+  const TestPhotoService(AppApi api) : super(api);
 
   @override
   Future<List<PhotoItem>> getPhotos() async {

@@ -5,11 +5,9 @@ import 'package:flutter_machine_test/models/photo_item.dart';
 import 'package:flutter_machine_test/services/photo_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:injectable/injectable.dart' as injectable;
-import 'package:mockito/mockito.dart';
 
 void main() {
   late final List<PhotoItem> items;
-  late final MockHomeBloc bloc;
 
   setUpAll(() async {
     configureDependencies(
@@ -20,7 +18,6 @@ void main() {
     final repository = locator<PhotoService>();
 
     items = await repository.getPhotos();
-    bloc = locator<MockHomeBloc>();
   });
 
   group('- Logic methods test', () {
@@ -30,37 +27,23 @@ void main() {
         expect(items.length, 5000);
       });
     });
-    group('- BloC test', () {
-      test('emits [] when nothing is added', () {
-        expect(bloc.state, const Loading());
-      });
-      test('emits [] when nothing is added', () async {
-        bloc.add(const HomeEvent.loadPhotos());
-
-        expect(bloc.state, const Loading());
-      });
-    });
   });
 
   group('- BloC test 2', () {
-    blocTest<MockHomeBloc, HomeState>(
+    blocTest<HomeBloc, HomeState>(
       'emits [] when nothing is added',
-      build: () => locator<MockHomeBloc>(),
-      expect: () => <HomeState>[
-        const Initial(),
-        // LoadedPhotos(items),
+      build: () => locator<HomeBloc>(),
+      expect: () => <HomeState>[],
+    );
+    blocTest<HomeBloc, HomeState>(
+      'emits [HomeState] when MyEvent is added',
+      build: () => locator<HomeBloc>(),
+      act: (bloc) => bloc.add(const HomeEvent.loadPhotos()),
+      wait: const Duration(seconds: 2),
+      expect: () => [
+        const Loading(),
+        LoadedPhotos(items),
       ],
     );
-    blocTest<MockHomeBloc, HomeState>('emits [HomeState] when MyEvent is added',
-        build: () => locator<MockHomeBloc>(),
-        act: (bloc) => bloc.add(const HomeEvent.loadPhotos()),
-        wait: const Duration(seconds: 2),
-        expect: () => [
-              // const Loading(),
-              LoadedPhotos(items),
-            ],
-        verify: (_) {
-          verify(() => locator<PhotoService>().getPhotos()).called(2);
-        });
   });
 }
