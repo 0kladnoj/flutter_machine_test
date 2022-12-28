@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../models/photo_item.dart';
 import '../../../utils/app_utils.dart';
 
+// TODO(Dima): Improve this page
 class DetailScreen extends StatelessWidget {
   final PhotoItem item;
 
@@ -43,7 +44,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  SliverToBoxAdapter _buildId() {
+  Widget _buildId() {
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
@@ -60,7 +61,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  SliverToBoxAdapter _buildItemTitle() {
+  Widget _buildItemTitle() {
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.symmetric(
@@ -78,7 +79,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  SliverToBoxAdapter _buildAlbum() {
+  Widget _buildAlbum() {
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.only(

@@ -18,24 +18,28 @@ class PhotoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return ListTile(
       key: Key(AppUtils.cardKey(_id)),
-      elevation: 4,
-      child: ListTile(
-        onTap: onTap,
-        leading: Hero(tag: AppUtils.photoTag(_id), child: _buildImage()),
-        title: Text(photoItem.title),
-        dense: true,
-        visualDensity: const VisualDensity(vertical: 4),
+      contentPadding: const EdgeInsets.all(8),
+      onTap: onTap,
+      leading: Hero(
+        tag: AppUtils.photoTag(_id),
+        child: _buildImage(),
       ),
+      title: Text(photoItem.title),
+      dense: true,
+      visualDensity: const VisualDensity(vertical: 4),
     );
   }
 
   Widget _buildImage() {
-    return CachedNetworkImage(
-      imageUrl: photoItem.thumbnailUrl,
-      placeholder: (_, __) => const CircularProgressIndicator(),
-      errorWidget: (_, __, ___) => const Icon(Icons.error),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(50),
+      child: CachedNetworkImage(
+        imageUrl: photoItem.thumbnailUrl,
+        placeholder: (_, __) => const CircularProgressIndicator(),
+        errorWidget: (_, __, ___) => const Icon(Icons.error),
+      ),
     );
   }
 }

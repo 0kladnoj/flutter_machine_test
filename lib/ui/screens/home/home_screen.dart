@@ -16,7 +16,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Photos'),
+        title: Text(
+          'Photos'.toUpperCase(),
+          style: const TextStyle(
+            letterSpacing: 1.5,
+          ),
+        ),
+        centerTitle: true,
       ),
       body: BlocProvider(
         create: (_) => locator<HomeBloc>()..add(const HomeEvent.loadPhotos()),
@@ -26,7 +32,7 @@ class HomeScreen extends StatelessWidget {
               return state.when(
                 initial: () => const LoadingView(),
                 loading: () => const LoadingView(),
-                loadedPhotos: (fact) => _photosList(context, fact),
+                loadedPhotos: (fact) => _buildPhotosList(context, fact),
                 error: (error) => ErrorView(error: error),
               );
             },
@@ -36,8 +42,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _photosList(BuildContext context, List<PhotoItem> photos) {
-    return ListView.builder(
+  Widget _buildPhotosList(BuildContext context, List<PhotoItem> photos) {
+    return ListView.separated(
       itemCount: photos.length,
       itemBuilder: (context, index) {
         final photoItem = photos[index];
@@ -52,6 +58,7 @@ class HomeScreen extends StatelessWidget {
           },
         );
       },
+      separatorBuilder: (context, index) => const Divider(height: 1),
     );
   }
 }
