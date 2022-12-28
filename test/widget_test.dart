@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_machine_test/di/di.dart';
-import 'package:flutter_machine_test/main.dart';
+import 'package:flutter_machine_test/machine_test_app.dart';
 import 'package:flutter_machine_test/services/photo_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:injectable/injectable.dart' as injectable;
@@ -23,14 +23,14 @@ void main() {
 
   group('- Home Screen test', () {
     testWidgets('- Load data test', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-      expect(find.text('Photos'), findsOneWidget);
+      await tester.pumpWidget(const MachineTestApp());
+      expect(find.text('Photos'.toUpperCase()), findsOneWidget);
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
       await tester.pump();
       expect(find.byType(ListView), findsOneWidget);
     });
     testWidgets('- List scroll test', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
+      await tester.pumpWidget(const MachineTestApp());
       await tester.pump();
       expect(find.byType(ListView), findsOneWidget);
       expect(find.byKey(const Key('item-1')), findsOneWidget);
@@ -45,7 +45,7 @@ void main() {
     });
 
     testWidgets('- Show detail screen test', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
+      await tester.pumpWidget(const MachineTestApp());
       await tester.pump();
       await tester.dragUntilVisible(
         find.byKey(const Key('item-100')),

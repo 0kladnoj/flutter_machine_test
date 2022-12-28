@@ -15,28 +15,36 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Photos'.toUpperCase(),
-          style: const TextStyle(
-            letterSpacing: 1.5,
-          ),
+      appBar: _buildAppBar(),
+      body: _buildContent(),
+    );
+  }
+
+  AppBar _buildAppBar() {
+    return AppBar(
+      title: Text(
+        'Photos'.toUpperCase(),
+        style: const TextStyle(
+          letterSpacing: 1.5,
         ),
-        centerTitle: true,
       ),
-      body: BlocProvider(
-        create: (_) => locator<HomeBloc>()..add(const HomeEvent.loadPhotos()),
-        child: SafeArea(
-          child: BlocBuilder<HomeBloc, HomeState>(
-            builder: (context, state) {
-              return state.when(
-                initial: () => const LoadingView(),
-                loading: () => const LoadingView(),
-                loadedPhotos: (fact) => _buildPhotosList(context, fact),
-                error: (error) => ErrorView(error: error),
-              );
-            },
-          ),
+      centerTitle: true,
+    );
+  }
+
+  Widget _buildContent() {
+    return BlocProvider(
+      create: (_) => locator<HomeBloc>()..add(const HomeEvent.loadPhotos()),
+      child: SafeArea(
+        child: BlocBuilder<HomeBloc, HomeState>(
+          builder: (context, state) {
+            return state.when(
+              initial: () => const LoadingView(),
+              loading: () => const LoadingView(),
+              loadedPhotos: (fact) => _buildPhotosList(context, fact),
+              error: (error) => ErrorView(error: error),
+            );
+          },
         ),
       ),
     );

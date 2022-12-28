@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../../models/photo_item.dart';
 import '../../../utils/app_utils.dart';
 
-// TODO(Dima): Improve this page
 class DetailScreen extends StatelessWidget {
   final PhotoItem item;
 
@@ -36,11 +35,29 @@ class DetailScreen extends StatelessWidget {
           tag: AppUtils.photoTag(item.id),
           child: CachedNetworkImage(
             imageUrl: item.url,
-            placeholder: (_, __) => const CircularProgressIndicator(),
+            width: double.infinity,
+            placeholder: (_, __) => _buildPreloadIcon(),
             errorWidget: (_, __, ___) => const Icon(Icons.error),
+            fit: BoxFit.cover,
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildPreloadIcon() {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        CachedNetworkImage(
+          imageUrl: item.thumbnailUrl,
+          width: double.infinity,
+          placeholder: (_, __) => const CircularProgressIndicator(),
+          errorWidget: (_, __, ___) => const Icon(Icons.error),
+          fit: BoxFit.cover,
+        ),
+        const CircularProgressIndicator(),
+      ],
     );
   }
 

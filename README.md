@@ -1,16 +1,19 @@
-# flutter_machine_test
+# **Machine Tests**
 
-A new Flutter project.
+Flutter проект совмещающий в себе ряд новейших технологий и паттернов программирования
 
-## Getting Started
+## Technologies
 
-This project is a starting point for a Flutter application.
+- В основе архетиктуры проекта лежит [Bloc](https://pub.dev/packages/flutter_bloc)
 
-A few resources to get you started if this is your first Flutter project:
+- API - реализован на колаборации [Dio](https://pub.dev/packages/dio) and [Retrofit](https://pub.dev/packages/retrofit)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Генерация моделей осуществляется [freezed](https://pub.dev/packages/freezed) and [json_annotation](https://pub.dev/packages/json_annotation)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Проект разделен на несколько слоев (State-management, services, models, API, UI)
+
+## Tests App
+
+- Integrations
+
+- Widgets
