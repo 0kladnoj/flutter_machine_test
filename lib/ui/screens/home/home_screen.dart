@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Photos'),
       ),
       body: BlocProvider(
-        create: (_) => locator<HomeBloc>(),
+        create: (_) => locator<HomeBloc>()..add(const HomeEvent.loadPhotos()),
         child: SafeArea(
           child: BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {

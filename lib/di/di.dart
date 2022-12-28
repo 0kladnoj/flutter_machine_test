@@ -10,4 +10,8 @@ final locator = GetIt.I;
   preferRelativeImports: true,
   asExtension: false,
 )
-void configureDependencies() => $initGetIt(locator);
+GetIt configureDependencies([
+  Environment environment = const Environment(Environment.dev),
+]) {
+  return $initGetIt(locator, environment: environment.name);
+}
