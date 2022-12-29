@@ -1,16 +1,18 @@
-# flutter_machine_test
+# Machine Tests
 
-A new Flutter project.
+A minimalistic Flutter project that contains the basic functionality of accessing an API, parsing and serializing the data models, and automation testing.
 
-## Getting Started
+The project iteslf consists of 4 main layers: Presentation, State Management, Business Logic and Data.
 
-This project is a starting point for a Flutter application.
+## Packages
 
-A few resources to get you started if this is your first Flutter project:
+- State Management: [Bloc](https://pub.dev/packages/flutter_bloc)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- API: [Dio](https://pub.dev/packages/dio) & [Retrofit](https://pub.dev/packages/retrofit)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Model Generation: [Freezed](https://pub.dev/packages/freezed) and [json_annotation](https://pub.dev/packages/json_annotation)
+
+## App's Tests
+
+- Integration
+- Widget

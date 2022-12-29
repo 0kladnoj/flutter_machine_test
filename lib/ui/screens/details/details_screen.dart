@@ -35,15 +35,33 @@ class DetailScreen extends StatelessWidget {
           tag: AppUtils.photoTag(item.id),
           child: CachedNetworkImage(
             imageUrl: item.url,
-            placeholder: (_, __) => const CircularProgressIndicator(),
+            width: double.infinity,
+            placeholder: (_, __) => _buildPreloadIcon(),
             errorWidget: (_, __, ___) => const Icon(Icons.error),
+            fit: BoxFit.cover,
           ),
         ),
       ),
     );
   }
 
-  SliverToBoxAdapter _buildId() {
+  Widget _buildPreloadIcon() {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        CachedNetworkImage(
+          imageUrl: item.thumbnailUrl,
+          width: double.infinity,
+          placeholder: (_, __) => const CircularProgressIndicator(),
+          errorWidget: (_, __, ___) => const Icon(Icons.error),
+          fit: BoxFit.cover,
+        ),
+        const CircularProgressIndicator(),
+      ],
+    );
+  }
+
+  Widget _buildId() {
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
@@ -60,7 +78,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  SliverToBoxAdapter _buildItemTitle() {
+  Widget _buildItemTitle() {
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.symmetric(
@@ -78,7 +96,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  SliverToBoxAdapter _buildAlbum() {
+  Widget _buildAlbum() {
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.only(

@@ -15,6 +15,9 @@ import 'package:injectable/injectable.dart' as _i2;
 import '../api/dio/dio_provider.dart' as _i8;
 import '../api/retrofit/app_api.dart' as _i7;
 
+const String _dev = 'dev';
+const String _test = 'test';
+
 /// ignore_for_file: unnecessary_lambdas
 /// ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of main-scope dependencies inside of [GetIt]
@@ -32,7 +35,14 @@ _i1.GetIt $initGetIt(
   final appApiModule = _$AppApiModule();
   gh.singleton<_i3.Dio>(dioProvider.dio());
   gh.lazySingleton<_i4.AppApi>(() => appApiModule.createAppApi(gh<_i3.Dio>()));
-  gh.factory<_i5.PhotoService>(() => _i5.PhotoService(gh<_i4.AppApi>()));
+  gh.factory<_i5.PhotoService>(
+    () => _i5.ApiPhotoService(gh<_i4.AppApi>()),
+    registerFor: {_dev},
+  );
+  gh.factory<_i5.PhotoService>(
+    () => _i5.TestPhotoService(gh<_i4.AppApi>()),
+    registerFor: {_test},
+  );
   gh.factory<_i6.HomeBloc>(() => _i6.HomeBloc(gh<_i5.PhotoService>()));
   return getIt;
 }

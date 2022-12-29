@@ -4,16 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 abstract class BaseBloc<Event, State> extends Bloc<Event, State> {
   BaseBloc(State initialState) : super(initialState);
 
-  void handleError(String massage);
+  State handleError(String massage);
 
-  Future<T?> performSafeAction<T>(
-    AsyncValueGetter<T> callback,
+  Future<State> performSafeAction(
+    AsyncValueGetter<State> callback,
   ) async {
     try {
       return await callback();
     } catch (exception) {
-      handleError('$exception');
-      return null;
+      return handleError('$exception');
     }
   }
 }

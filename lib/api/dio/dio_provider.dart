@@ -21,6 +21,7 @@ abstract class DioProvider {
             error: true,
             requestHeader: true,
             compact: true,
+            responseBody: false,
           ),
         ],
       );

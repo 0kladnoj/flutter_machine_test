@@ -5,39 +5,32 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter_machine_test/di/di.dart';
-import 'package:flutter_machine_test/services/photo_service.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_machine_test/di/di.dart';
+import 'package:flutter_machine_test/machine_test_app.dart';
+import 'package:flutter_machine_test/services/photo_service.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:injectable/injectable.dart' as injectable;
 
-import 'package:flutter_machine_test/main.dart';
-import 'package:mockito/annotations.dart';
-
-import 'flutter_test.dart';
-import 'flutter_test.mocks.dart';
-
-@GenerateNiceMocks([MockSpec<Dio>()])
 void main() {
-  final dio = MockDio();
   setUpAll(() async {
-    configureDependencies();
+    configureDependencies(
+      const injectable.Environment(injectable.Environment.test),
+    );
 
     locator.allowReassignment = true;
-    locator.registerSingleton<Dio>(dio);
-    mockApiData(dio);
   });
 
   group('- Home Screen test', () {
     testWidgets('- Load data test', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
-      expect(find.text('Photos'), findsOneWidget);
+      await tester.pumpWidget(const MachineTestApp());
+      expect(find.text('Photos'.toUpperCase()), findsOneWidget);
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
       await tester.pump();
       expect(find.byType(ListView), findsOneWidget);
     });
     testWidgets('- List scroll test', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
+      await tester.pumpWidget(const MachineTestApp());
       await tester.pump();
       expect(find.byType(ListView), findsOneWidget);
       expect(find.byKey(const Key('item-1')), findsOneWidget);
@@ -52,7 +45,7 @@ void main() {
     });
 
     testWidgets('- Show detail screen test', (WidgetTester tester) async {
-      await tester.pumpWidget(const MyApp());
+      await tester.pumpWidget(const MachineTestApp());
       await tester.pump();
       await tester.dragUntilVisible(
         find.byKey(const Key('item-100')),
