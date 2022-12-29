@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/home/home_bloc.dart';
 import '../../../di/di.dart';
 import '../../../models/photo_item.dart';
+import '../../../utils/app_strings.dart';
 import '../../views/error_view.dart';
 import '../../views/loading_view.dart';
 import '../details/details_screen.dart';
@@ -22,9 +23,9 @@ class HomeScreen extends StatelessWidget {
 
   AppBar _buildAppBar() {
     return AppBar(
-      title: Text(
-        'Photos'.toUpperCase(),
-        style: const TextStyle(
+      title: const Text(
+        AppStrings.photos,
+        style: TextStyle(
           letterSpacing: 1.5,
         ),
       ),
