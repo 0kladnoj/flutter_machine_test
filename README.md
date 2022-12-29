@@ -1,19 +1,18 @@
-# **Machine Tests**
+# Machine Tests
 
-Flutter проект совмещающий в себе ряд новейших технологий и паттернов программирования
+A minimalistic Flutter project that contains the basic functionality of accessing an API, parsing and serializing the data models, and automation testing.
 
-## Technologies
+The project iteslf consists of 4 main layers: Presentation, State Management, Business Logic and Data.
 
-- В основе архетиктуры проекта лежит [Bloc](https://pub.dev/packages/flutter_bloc)
+## Packages
 
-- API - реализован на колаборации [Dio](https://pub.dev/packages/dio) and [Retrofit](https://pub.dev/packages/retrofit)
+- State Management: [Bloc](https://pub.dev/packages/flutter_bloc)
 
-- Генерация моделей осуществляется [freezed](https://pub.dev/packages/freezed) and [json_annotation](https://pub.dev/packages/json_annotation)
+- API: [Dio](https://pub.dev/packages/dio) & [Retrofit](https://pub.dev/packages/retrofit)
 
-- Проект разделен на несколько слоев (State-management, services, models, API, UI)
+- Model Generation: [Freezed](https://pub.dev/packages/freezed) and [json_annotation](https://pub.dev/packages/json_annotation)
 
-## Tests App
+## App's Tests
 
-- Integrations
-
-- Widgets
+- Integration
+- Widget
